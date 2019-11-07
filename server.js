@@ -7,6 +7,7 @@ const connectDB = require("./config/db");
 
 //import routes
 const bootcamps = require("./routes/bootcamps");
+const courses = require("./routes/courses");
 
 //load env
 dotenv.config({ path: "./config/config.env" });
@@ -25,6 +26,7 @@ app.use(logger);
 
 // Mount Routes
 app.use("/api/v1/bootcamps", bootcamps);
+app.use("/api/v1/courses", courses);
 
 //error middleware
 app.use(errorHandler);
