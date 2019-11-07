@@ -1,6 +1,8 @@
 const express = require("express");
+const path = require("path");
 const dotenv = require("dotenv");
 const colors = require("colors");
+const fileUpload = require("express-fileupload");
 const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/error");
 const connectDB = require("./config/db");
@@ -23,6 +25,10 @@ const PORT = process.env.PORT || 5000;
 
 //middleware
 app.use(logger);
+app.use(fileUpload());
+
+// Set static folder
+app.use(express.static(path.join(__dirname, "public")));
 
 // Mount Routes
 app.use("/api/v1/bootcamps", bootcamps);
